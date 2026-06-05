@@ -1,11 +1,10 @@
 # dotfiles
 
-Personal config for macOS dev env. Designed to bootstrap a fresh mac without having to fiddle around myself.
+Personal config for macOS dev env. Designed to bootstrap a fresh mac without having to fiddle around myself. Heavily relies on symlinks to point the system at this repo from the normal config homes, so not really something that will work on windows.
+
+Changes are auto-committed and pushed daily via `dotfiles/sync.sh`.
 
 Thanks to [Jamie for the inspo](https://github.com/jmemich/dotfiles) (both of the git repo and the configs).
-
-Heavily relies on symlinks to point the system at this repo from the normal config homes, so not really something that will work on windows. That's what 
-`setup.sh` does.
 
 ## Layout
 
