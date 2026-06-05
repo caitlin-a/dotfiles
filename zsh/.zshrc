@@ -34,11 +34,12 @@ setopt HIST_IGNORE_SPACE
 # ---------------------------------------------------------------------------
 # Aliases
 # ---------------------------------------------------------------------------
-alias l='ls -lah'
-alias ..='cd ..'
-alias ...='cd ../..'
+alias l='ls -lah'        # long list with hidden files, human-readable sizes
+alias ..='cd ..'         # go up one directory
+alias ...='cd ../..'     # go up two directories
 alias md='glow'          # render markdown in terminal (requires glow)
 alias stay='caffeinate'  # prevent Mac sleep during long runs
+alias c='claude'         # open Claude Code
 
 # ---------------------------------------------------------------------------
 # Prompt & history (loaded if installed)
