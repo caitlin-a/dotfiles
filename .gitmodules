@@ -1,0 +1,3 @@
+[submodule "ai-config"]
+	path = ai-config
+	url = git@github.com:caitlin-a/ai-config.git

@@ -1,0 +1,19 @@
+[user]
+	name = Caitlin Adams
+	email = 16897422+caitlin-a@users.noreply.github.com
+
+[core]
+	excludesFile = ~/.config/git/ignore
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
+
+[alias]
+	co     = checkout
+	cm     = commit -m
+	ri     = rebase -i
+	recent = log --oneline --graph --decorate -10
+	unfuck = rebase --abort

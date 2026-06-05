@@ -1,0 +1,13 @@
+theme = Catppuccin Mocha
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+window-padding-x = 12
+window-padding-y = 12
+scrollback-limit = 25000000
+shell-integration = zsh
+clipboard-trim-trailing-spaces = true
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = false
+macos-option-as-alt = true
+macos-titlebar-style = tabs

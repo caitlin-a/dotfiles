@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+.env
+.venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors
+.cursor/
+.vscode/
+*.swp
+*.swo
