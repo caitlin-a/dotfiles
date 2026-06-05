@@ -33,6 +33,10 @@ bash ~/dotfiles/setup.sh
 gh auth login
 ```
 
+## Syncing
+
+`sync.sh` runs daily via launchd and auto-commits + pushes any uncommitted changes. Runs on next wake if the machine was closed at the scheduled time. Logs to `sync.log` (gitignored).
+
 ## Conventions
 
 - `~/.zshrc.local` is gitignored - machine-specific shell config goes here
