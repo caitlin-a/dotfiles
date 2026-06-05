@@ -1,23 +1,28 @@
 # dotfiles
 
-macOS dotfiles. Structure nicked from [Jamie's dotfiles](https://github.com/jmemich/dotfiles).
+macOS dev environment config. Structure nicked from [Jamie's dotfiles](https://github.com/jmemich/dotfiles).
 
-`setup.sh` installs Homebrew (if absent), runs `brew bundle`, and symlinks everything from this repo into `~`. Idempotent - safe to re-run.
+`setup.sh` symlinks everything from this repo into `~`, so configs live here and the rest of the system finds them at the paths it expects. Idempotent - safe to re-run.
 
-## What's here
+## Layout
 
-| | |
-|---|---|
-| `zsh/` | `.zshrc`, `.zprofile` |
-| `tmux/` | `.tmux.conf` |
-| `git/` | `.gitconfig`, global gitignore |
-| `ghostty/` | Terminal config |
-| `starship/` | Prompt config |
-| `vim/` | `.vimrc` |
-| `Brewfile` | All Homebrew packages |
-| `ai-config/` | AI agent config (submodule - [caitlin-a/ai-config](https://github.com/caitlin-a/ai-config)) |
+```
+dotfiles/
+├── setup.sh                 # install + symlink entry point
+├── Brewfile                 # all Homebrew packages (brew bundle)
+│
+├── zsh/                     # .zshrc, .zprofile
+├── tmux/                    # .tmux.conf
+├── git/                     # .gitconfig, global gitignore
+├── ghostty/                 # terminal emulator config
+├── starship/                # prompt config
+├── vim/                     # .vimrc
+└── ai-config/               # SUBMODULE — AI agent config (Claude, Cursor)
+```
 
-## Fresh machine setup
+One folder per tool, mirroring where the tool expects its config under `$HOME`.
+
+## Setup
 
 ```bash
 git clone --recurse-submodules git@github.com:caitlin-a/dotfiles.git ~/dotfiles
@@ -25,8 +30,8 @@ bash ~/dotfiles/setup.sh
 gh auth login
 ```
 
-## Machine-specific stuff (not tracked)
+## Conventions
 
-- `~/.zshrc.local` - sourced by `.zshrc` if it exists; machine-specific shell overrides go here
-- `~/.claude/AGENTS.personal.md` - personal context for AI agents (see ai-config)
-- `~/.claude/settings.local.json` - machine-specific Claude Code permissions
+- `~/.zshrc.local` is gitignored - machine-specific shell config goes here
+- `~/.claude/AGENTS.personal.md` is gitignored - personal context for AI agents (see ai-config)
+- `~/.claude/settings.local.json` is gitignored - machine-specific Claude Code permissions
