@@ -65,4 +65,20 @@ if [[ -f "$DOTFILES/ai-config/setup.sh" ]]; then
     bash "$DOTFILES/ai-config/setup.sh"
 fi
 
+# ---------------------------------------------------------------------------
+# Launchd — daily auto-sync
+# ---------------------------------------------------------------------------
+PLIST_SRC="$DOTFILES/com.caitlinadams.dotfiles-sync.plist"
+PLIST_DST="$HOME/Library/LaunchAgents/com.caitlinadams.dotfiles-sync.plist"
+PLIST_LABEL="com.caitlinadams.dotfiles-sync"
+
+if [[ -f "$PLIST_SRC" ]]; then
+    cp "$PLIST_SRC" "$PLIST_DST"
+    if launchctl list | grep -q "$PLIST_LABEL"; then
+        launchctl unload "$PLIST_DST"
+    fi
+    launchctl load "$PLIST_DST"
+    blue "launchd: $PLIST_LABEL loaded"
+fi
+
 blue "dotfiles setup complete."
