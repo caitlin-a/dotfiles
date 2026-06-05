@@ -1,33 +1,32 @@
 # dotfiles
 
-My macOS dotfiles. Inspired by [Jamie's setup](https://github.com/jmemich/dotfiles).
+macOS dotfiles. Structure nicked from [Jamie's dotfiles](https://github.com/jmemich/dotfiles).
+
+`setup.sh` installs Homebrew (if absent), runs `brew bundle`, and symlinks everything from this repo into `~`. Idempotent - safe to re-run.
 
 ## What's here
 
-| Directory | Config for |
+| | |
 |---|---|
 | `zsh/` | `.zshrc`, `.zprofile` |
 | `tmux/` | `.tmux.conf` |
-| `git/` | `.gitconfig`, global `.gitignore` |
-| `ghostty/` | Ghostty terminal config |
-| `starship/` | Starship prompt |
+| `git/` | `.gitconfig`, global gitignore |
+| `ghostty/` | Terminal config |
+| `starship/` | Prompt config |
 | `vim/` | `.vimrc` |
 | `Brewfile` | All Homebrew packages |
-| `ai-config/` | AI agent config (submodule) |
+| `ai-config/` | AI agent config (submodule - [caitlin-a/ai-config](https://github.com/caitlin-a/ai-config)) |
 
 ## Fresh machine setup
 
 ```bash
 git clone --recurse-submodules git@github.com:caitlin-a/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-bash setup.sh
+bash ~/dotfiles/setup.sh
 gh auth login
 ```
 
-`setup.sh` installs Homebrew (if absent), runs `brew bundle`, and symlinks everything into place. It's idempotent - safe to re-run.
+## Machine-specific stuff (not tracked)
 
-## Machine-specific config
-
-Shell overrides that shouldn't be tracked go in `~/.zshrc.local` - this file is sourced by `.zshrc` if it exists.
-
-Claude personal context goes in `~/.claude/AGENTS.personal.md` - loaded by `ai-config/AGENTS.md` but never committed.
+- `~/.zshrc.local` - sourced by `.zshrc` if it exists; machine-specific shell overrides go here
+- `~/.claude/AGENTS.personal.md` - personal context for AI agents (see ai-config)
+- `~/.claude/settings.local.json` - machine-specific Claude Code permissions
