@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Auto-syncs dotfiles and ai-config to GitHub.
-# Commits any uncommitted changes to a dated branch (auto/YYYY-MM-DD) and pushes.
-# Does NOT commit to main — review the branch and merge manually when happy.
+# Commits any uncommitted changes to the auto/sync branch and pushes.
+# Merge auto/sync to main manually whenever you're happy with it.
 # Safe to run when there's nothing to commit - exits quietly.
 #
 # Note: uses git plumbing (write-tree/commit-tree) to commit without switching
@@ -11,7 +11,6 @@ set -euo pipefail
 
 DOTFILES="$HOME/dotfiles"
 DATE="$(date +%Y-%m-%d)"
-BRANCH="auto/$DATE"
 
 # Load SSH key from macOS keychain so this works without an agent running
 ssh-add --apple-load-keychain 2>/dev/null || true
@@ -22,18 +21,27 @@ sync_repo() {
 
     if [[ -n "$(git status --porcelain)" ]]; then
         git add -A
+        git fetch --quiet
+
+        # Parent is tip of auto/sync if it exists, otherwise main HEAD
+        local parent
+        if git rev-parse --verify "origin/auto/sync" &>/dev/null; then
+            parent=$(git rev-parse "origin/auto/sync")
+        else
+            parent=$(git rev-parse HEAD)
+        fi
 
         # Commit to branch without switching (switching would revert live symlinked files)
         local tree commit
         tree=$(git write-tree)
-        commit=$(git commit-tree "$tree" -p "$(git rev-parse HEAD)" -m "auto: sync $DATE")
-        git branch -f "$BRANCH" "$commit"
-        git push -u origin "$BRANCH"
+        commit=$(git commit-tree "$tree" -p "$parent" -m "auto: sync $DATE")
+        git branch -f auto/sync "$commit"
+        git push -u origin auto/sync
 
         # Unstage - working tree is unchanged throughout
         git reset HEAD
 
-        echo "synced: $dir -> branch $BRANCH"
+        echo "synced: $dir -> auto/sync"
     fi
 }
 
