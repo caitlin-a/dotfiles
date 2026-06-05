@@ -12,6 +12,7 @@ Heavily relies on symlinks to point the system at this repo from the normal conf
 ```
 dotfiles/
 ├── setup.sh                 # install + symlink entry point
+├── sync.sh                  # daily auto-commit + push (runs via launchd)
 ├── Brewfile                 # all Homebrew packages (brew bundle)
 │
 ├── zsh/                     # .zshrc, .zprofile
