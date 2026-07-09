@@ -6,6 +6,7 @@
 [[ -f /usr/local/bin/brew ]]    && eval "$(/usr/local/bin/brew shellenv)"
 
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="/usr/local/texlive/2026basic/bin/universal-apple-darwin:$PATH"
 
 # ---------------------------------------------------------------------------
 # pyenv
