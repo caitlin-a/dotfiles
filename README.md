@@ -2,7 +2,7 @@
 
 Personal config for macOS dev env. Designed to bootstrap a fresh mac without having to fiddle around myself.
 
-Changes are auto-committed and pushed daily to the `auto/sync` branch via `sync.sh`, so that I don't lose them if the worst happens.
+Changes are auto-committed and pushed daily to the `auto-sync` branch via `sync.sh`, so that I don't lose them if the worst happens.
 
 Thanks to [Jamie for the inspo](https://github.com/jmemich/dotfiles) (both of the git repo and the configs).
 

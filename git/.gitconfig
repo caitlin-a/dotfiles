@@ -17,3 +17,7 @@
 	ri     = rebase -i
 	recent = log --oneline --graph --decorate -10
 	unfuck = rebase --abort
+	gone = !git branch -vv | grep \": gone]\"
+	nuke-branch = "!f() { git push origin --delete \"$1\" && git branch -d \"$1\"; }; f"
+[fetch]
+	prune = true
